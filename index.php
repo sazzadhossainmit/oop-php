@@ -4,32 +4,29 @@
 
 
 <?php
-// Example 1
-  class Person {
-    public $name;
-    public $age;
-    public $id;
 
-    public function __construct($pname, $page){
-      $this->name = $pname;
-      $this->age = $page;
-    }
+  class UserData{
+    public $user;
+    public $userId;
 
-    public function setId($id){
-      $this->id = $id;
+    public function __construct($usser, $usserId){
+      $this->user = $usser;
+      $this->userId = $usserId;
+
+      echo "Username is {$this->user} and user ID is {$this->userId}<br>";
     }
 
     public function __destruct(){
-      if(!empty($this->id)){
-        echo "created destructor";
-      }
+      unset($this->user);
+      unset($this->userId);
     }
-    
   }
 
-  $personOne = new Person("Sazzad Hossain", "23");
-  $personOne->setId(11);
-  unset($personOne);
+
+$ur = "Sazzad";
+$id = 20;
+
+  $usr = new UserData($ur, $id);
 
 ?> 
 
