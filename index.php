@@ -3,80 +3,57 @@
 ?>
 
 
-<form action="" method="POST">
-  <table>
-    <tr>
-      <td>Enter the first number</td>
-      <td><input type="number" name="num1"></td>
-    </tr>
-    <tr>
-      <td>Enter the second number</td>
-      <td><input type="number" name="num2" ></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><input type="submit" name="calculation" value="Calculate"></td>
-    </tr>
-  </table>
-</form>
-
 <?php
-	//form validation
-  if(isset($_POST['calculation'])){
-    $numOne = $_POST['num1'];
-    $numTwo = $_POST['num2'];
+// Example 1
+  class Person {
+    public $name;
+    public $age;
 
-    if(empty($numOne) or empty($numTwo)){
-      echo "<span style='color:red;' > Please fill out these fields </span><br>";
-    } else{
-
-      echo "<span style='font-style:italic;'>Calculation of the number ".$numOne. " & ".$numTwo. "</span><br>";
-			
-			// object
-      $calc = new Compute;
-      $calc->add($numOne, $numTwo);
-      $calc->sub($numOne, $numTwo);
-      $calc->multi($numOne, $numTwo);
-      $calc->div($numOne, $numTwo);
+    public function __construct($pname, $page){
+      $this->name = $pname;
+      $this->age = $page;
     }
 
-  }
-?>
-
-<?php
-	// class
-  class Compute{
+    public function personDetails (){
+      echo "Person name is {$this->name} and person age is {$this->age}";
+    }
     
-    public function add($a, $b){
-      $a = (float)$a;
-      $b = (float)$b;
-
-      echo "Summation = ". ($a+$b)."<br>";
-    }
-
-    public function sub($a, $b){
-      $a = (float)$a;
-      $b = (float)$b;
-
-      echo "Substraction = ". ($a-$b)."<br>";
-    }
-
-    public function multi($a, $b){
-      $a = (float)$a;
-      $b = (float)$b;
-
-      echo "Multiplication = ". ($a*$b)."<br>";
-    }
-
-    public function div($a, $b){
-      $a = (float)$a;
-      $b = (float)$b;
-
-      echo "Division = ". ($a/$b);
-    }
   }
 
-?>
+  $personOne = new Person("Sazzad Hossain", "23");
+  $personOne->personDetails();
+?> 
+
+<?php
+// Example 2
+  class BankAccount{
+    public $owner;
+    public $balance;
+
+    public function __construct($owner, $balance){
+      $this->owner = $owner;
+      $this->balance = $balance;
+    }
+
+    public function deposit($ammount){
+      $this->balance += $ammount;
+    }
+
+    public function withdraw($ammount){
+      $this->balance -= $ammount;
+    }
+
+    function BalanceCheck(){
+      return $this->balance;
+    }
+
+  }
+
+  $acc = new BankAccount("Sazzad Hossain", 5300);
+  $acc->deposit(500);
+  $acc->withdraw(300);
+  echo "Current bank balance: ". $acc->BalanceCheck();
+?> 
 
 
 
