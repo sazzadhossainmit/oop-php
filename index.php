@@ -4,32 +4,29 @@
 
 
 <?php
-  class Person {
-    public $name = "Sazzad";
-    public $age = "20";
-    public $skill = "Blogging";
 
-    private $email = "sazzadhossain@gmail.com";
-    protected $password = "1234";
-
-    public function iteratorInner(){
-      echo "Inside class <br>";
-      foreach($this as $key => $value){
-        echo "<pre>";
-        echo "$key => $value";
-        echo "</pre>";
-      }
+  trait Php{
+    public function phpCoder(){
+      return "I love PHP <br>";
     }
   }
-  
-  $obj = new Person();
-  foreach($obj as $key => $value){
-    echo "<pre>";
-    echo "$key => $value";
-    echo "</pre>";
+
+  trait Java{
+    public function javaCoder() {
+      return "I love JAVA <br>";
+    }
   }
 
-  $obj->iteratorInner();
+  trait phpJava{
+    use Php, Java;
+  }
+  class coderOne{
+    use phpJava;
+  }
+
+  $obj1 = new coderOne();
+  echo $obj1->phpCoder();
+  echo $obj1->javaCoder();
 ?>
 
 
