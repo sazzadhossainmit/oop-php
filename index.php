@@ -4,57 +4,33 @@
 
 
 <?php
-// overriden multiple interfaces with multiple classes implemented
-  interface School{
-    public function mySchool();
-  }
-  interface College{
-    public function myCollege();
-  }
-  interface Varsity{
-    public function myVarsity();
-  }
 
-  class Teacher implements School, College, Varsity{
+  abstract class Student{
+    public $name;
+    public $age;
 
-    public function __construct(){
-      $this->mySchool();
-      $this->myCollege();
-      $this->myVarsity();
+    public function details(){
+      echo "{$this->name} is {$this->age} years old.";
     }
 
-    public function mySchool(){
-      echo "I am a school teacher. <br>";
+    abstract public function school();
+  }
+
+  class Boy extends Student{
+    public function description(){
+      return parent::details(). " He is a varsity student.";
     }
-    public function myCollege(){
-      echo "I am a college teacher. <br>";
-    }
-    public function myVarsity(){
-      echo "I am a varsity teacher. <br>";
+
+    public function school(){
+      return " He likes to read story book.";
     }
   }
 
-  class Student implements School, College, Varsity{
-
-    public function __construct(){
-      $this->mySchool();
-      $this->myCollege();
-      $this->myVarsity();
-    }
-
-    public function mySchool(){
-      echo "I am a school student. <br>";
-    }
-    public function myCollege(){
-      echo "I am a college student. <br>";
-    }
-    public function myVarsity(){
-      echo "I am a varsity student. <br>";
-    }
-  }
-
-  $teacher = new Teacher();
-  $student = new Student();
+  $s = new Boy();
+  $s->name = "Jamal";
+  $s->age = 30;
+  echo $s->description();
+  echo $s->school();
 ?> 
 
 
