@@ -12,18 +12,13 @@
 ?>
 
 <?php
-  if(class_exists("Test")){
-    $obj = new Test();
-    if(method_exists($obj, "description")){
-      $obj->description();
-    } else {
-      echo "Method does not exist";
-    }
-  } else {
-    echo "class does not exist";
-  }
+  spl_autoload_register(function($className){
+    include "classes/$className.php";
+  });
+  $java = new Java();
+  $php = new Php();
+  $ruby = new Ruby();
 ?>
-
 
 
 
