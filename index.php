@@ -4,34 +4,21 @@
 
 
 <?php
-
-  abstract class Student{
-    public $name;
-    public $age;
-
-    public function details(){
-      echo "{$this->name} is {$this->age} years old.";
+  class Student {
+    public $pm;
+    public function description (){
+      echo "I am a student.<br>";
     }
 
-    abstract public function school();
-  }
-
-  class Boy extends Student{
-    public function description(){
-      return parent::details(). " He is a varsity student.";
-    }
-
-    public function school(){
-      return " He likes to read story book.";
+    public function __get($name){
+      echo "$name does not exist.";
     }
   }
 
-  $s = new Boy();
-  $s->name = "Jamal";
-  $s->age = 30;
-  echo $s->description();
-  echo $s->school();
-?> 
+  $st = new Student();
+  $st->description();
+  $st->Hasan;
+?>
 
 
 
