@@ -4,20 +4,25 @@
 
 
 <?php
-  class Test{
-    public function description(){
-      echo "Class and method exist.";
+  class Calculation{
+    public $a = 0;
+    public $b = 0;
+    public $result;
+
+    public function getValue($x, $y){
+      $this->a = $x;
+      $this->b = $y;
+      return $this;
+    }
+
+    public function getResult(){
+      $this->result = $this->a * $this->b;
+      return $this->result;
     }
   }
-?>
-
-<?php
-  spl_autoload_register(function($className){
-    include "classes/$className.php";
-  });
-  $java = new Java();
-  $php = new Php();
-  $ruby = new Ruby();
+  
+  $calc = new Calculation();
+  echo "Result is ". $calc->getValue(3,5)->getResult();
 ?>
 
 
