@@ -5,13 +5,23 @@
 
 <?php
   class Test{
-    public function __call($name, $arguments)
-    {
-      echo "There is no method called<b> ". $name. " </b> and arguments as: ". implode(", ", $arguments);
+    public function description(){
+      echo "Class and method exist.";
     }
   }
-  $obj = new Test();
-  $obj->undefinedMethod(2, 4, 5);
+?>
+
+<?php
+  if(class_exists("Test")){
+    $obj = new Test();
+    if(method_exists($obj, "description")){
+      $obj->description();
+    } else {
+      echo "Method does not exist";
+    }
+  } else {
+    echo "class does not exist";
+  }
 ?>
 
 
