@@ -5,15 +5,13 @@
 
 <?php
   class Test{
-    private $data = [];
-    public function __set($name, $value)
+    public function __call($name, $arguments)
     {
-      echo "Setting $name = $value";
-      $this->data[$name] = $value;
+      echo "There is no method called<b> ". $name. " </b> and arguments as: ". implode(", ", $arguments);
     }
   }
   $obj = new Test();
-  $obj->age = 15;
+  $obj->undefinedMethod(2, 4, 5);
 ?>
 
 
