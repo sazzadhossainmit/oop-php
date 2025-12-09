@@ -5,49 +5,31 @@
 
 <?php
 
-  class UserData{
-    public $user;
-    public $userId;
-    protected $age = 30;
-
-    public function __construct($usser, $usserId){
-      $this->user = $usser;
-      $this->userId = $usserId;
-
+  class Animal{
+    public function sound(){
+      echo "Animal makes noise.";
     }
-
-    public function display(){
-      echo "Username is {$this->user} and user ID is {$this->userId}<br>";
-      echo $this->age ." Inside Class<br>";
-    }
-
   }
 
-  class Admin extends UserData{
-    public $level;
-
-    public function display(){
-      echo "Username is {$this->user} and user ID is {$this->userId} and user level is {$this->level}.<br>";
-      echo $this->age. "Inside the Sub-class";
+  class Dog extends Animal{
+    public function sound(){
+      echo "Dog barks.";
     }
-
   }
 
-  
+  class Cat extends Animal{
+    public function sound(){
+      echo "Cat meows.";
+    }
+  }
 
-$ur = "Sazzad";
-$id = 20;
-  $usr = new UserData($ur, $id);
-  echo $usr->age;
-  $usr->display();
+  $doggy = new Dog();
+  $doggy->sound();
+  echo "<br>";
+  $catty = new Cat();
+  $catty->sound();
 
-$aname = "Admin";
-$aid = 9;
-  $ad = new Admin($aname, $aid);
-  $ad->level = "Administrator";
-  $ad->display();
-
-?>
+?> 
 
 
 
