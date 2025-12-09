@@ -4,20 +4,16 @@
 
 
 <?php
-  class Student {
-    public $pm;
-    public function description (){
-      echo "I am a student.<br>";
-    }
-
-    public function __get($name){
-      echo "$name does not exist.";
+  class Test{
+    private $data = [];
+    public function __set($name, $value)
+    {
+      echo "Setting $name = $value";
+      $this->data[$name] = $value;
     }
   }
-
-  $st = new Student();
-  $st->description();
-  $st->Hasan;
+  $obj = new Test();
+  $obj->age = 15;
 ?>
 
 
