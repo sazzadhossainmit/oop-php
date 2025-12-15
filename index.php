@@ -4,31 +4,25 @@
 
 
 <?php
+  spl_autoload_register(function($class_name){
+    include "classes/".$class_name.".php";
+  });
+?>
 
-	abstract class Person{
-    public function details(){
-      echo "Parent/Base class constant and class name: ".__CLASS__."<br>";
-      echo "Parent/Base class function and class name: ".get_class($this)."<br>";
+<?php
+
+  Class ChildPhp extends Php{
+    public static function getClass(){
+      return __CLASS__;
     }
   }
-  
-  class ChildPerson extends Person{
-    public function childDetails(){
-      echo "Child class constant and class name: ".__CLASS__."<br>";
-      echo "Child class function and class name: ".get_class($this)."<br>";
-    }
 
-    public function ourMethod(){
-      parent::details();
-    }
-  }
-  
-  $obj = new ChildPerson();
-  $obj->details();
-  echo "<hr>";
-  $obj->childDetails();
-  echo "<hr>";
-  $obj->ourMethod();
+
+  $php = new Php();
+  $php->framework();
+
+  $childphp = new ChildPhp();
+  $childphp->framework();
 ?>
 
 
