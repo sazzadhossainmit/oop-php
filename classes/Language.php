@@ -19,6 +19,12 @@
     public function getFramework(){
       return $this->framework;
     }
+
+    public function __clone(){
+      $lang = new Language();
+      $lang->setFramework($this->framework);
+      return $lang;
+    }
   }
 
 ?>
