@@ -1,30 +1,28 @@
-<?php 
-  include('inc/header.php');
+<?php
+include('inc/header.php');
 ?>
 
 
 <?php
+/*
   spl_autoload_register(function($class_name){
     include "classes/".$class_name.".php";
   });
-?>
 
+  */
 
-<?php
+  // for($i=0, $i<10, $i++){};
 
-  $oldObj = new Language();
-  $oldObj->setCat("OOP");
-  $oldObj->setFramework("Laravel");
-  
-  $newOjb = clone $oldObj;
-  $newOjb->setCat("Structural");
-  $newOjb->setFramework("CodeIgniter");
+  $arr = array("PHP","HTML","CSS","JavaScript");
 
-  echo $oldObj->getCat()."<br>";
-  echo $oldObj->getFramework()."<br>";
+  $coding = new ArrayObject($arr);
+  $coding->append("JAVA");
+  $iterator = $coding->getIterator();
+  while($iterator->valid()){
+    echo $iterator->current()."<br>";
+    $iterator->next();
+  }
 
-  echo $newOjb->getCat()."<br>";
-  echo $newOjb->getFramework()."<br>";
 ?>
 
 
