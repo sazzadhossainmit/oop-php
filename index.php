@@ -9,20 +9,22 @@
   });
 ?>
 
+
 <?php
 
-  Class ChildPhp extends Php{
-    public static function getClass(){
-      return __CLASS__;
-    }
-  }
+  $oldObj = new Language();
+  $oldObj->setCat("OOP");
+  $oldObj->setFramework("Laravel");
+  
+  $newOjb = clone $oldObj;
+  $newOjb->setCat("Structural");
+  $newOjb->setFramework("CodeIgniter");
 
+  echo $oldObj->getCat()."<br>";
+  echo $oldObj->getFramework()."<br>";
 
-  $php = new Php();
-  $php->framework();
-
-  $childphp = new ChildPhp();
-  $childphp->framework();
+  echo $newOjb->getCat()."<br>";
+  echo $newOjb->getFramework()."<br>";
 ?>
 
 
