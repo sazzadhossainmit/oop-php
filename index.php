@@ -2,28 +2,25 @@
   include('inc/header.php');
 ?>
 
-
 <?php
 
-  spl_autoload_register(function($class_name){
-    include "classes/".$class_name.".php";
-  });
+  // spl_autoload_register(function($class_name){
+  //   include "classes/".$class_name.".php";
+  // });
 
-  $pro = new Programming();
-  $ser = serialize($pro);
-  /*
-  // object stored
-  file_put_contents("programming.txt", $ser);
-  echo $ser;
-  */
+  include "classes/Php.php";
+  include "classes/Ruby.php";
+  include "classes/Java.php";
 
-  // object restored
-  $getcont = file_get_contents("programming.txt");
-  $unser = unserialize($getcont);
+  use sazzad\Ruby as ru; //using alias
 
-  echo "<pre>";
-  print_r($unser);
-  echo "</pre>";
+  new sazzad\live\Php();
+  new ru();
+  new sazzad\Java();
+
+  echo HTML;
+  echo sazzad\CSS;
+  sazzad\coding();
 ?>
 
 
