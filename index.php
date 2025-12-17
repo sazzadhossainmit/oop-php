@@ -1,8 +1,5 @@
 <?php
-
-use Dom\CharacterData;
-
-include('inc/header.php');
+  include('inc/header.php');
 ?>
 
 
@@ -12,18 +9,21 @@ include('inc/header.php');
     include "classes/".$class_name.".php";
   });
 
+  $pro = new Programming();
+  $ser = serialize($pro);
+  /*
+  // object stored
+  file_put_contents("programming.txt", $ser);
+  echo $ser;
+  */
 
-  $arr = array("PHP","HTML","CSS","JavaScript","JAVA");
-  $ai = new ArrayIterator($arr);
-  // $limit = new LimitIterator($ai,0,2);
-  $ci = new CachingIterator($ai);
-  foreach($ci as $value){
-    echo $value;
-    if($ci->hasNext()){
-      echo ", ";
-    }
-  }
+  // object restored
+  $getcont = file_get_contents("programming.txt");
+  $unser = unserialize($getcont);
 
+  echo "<pre>";
+  print_r($unser);
+  echo "</pre>";
 ?>
 
 
