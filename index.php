@@ -3,24 +3,25 @@
 ?>
 
 <?php
+  spl_autoload_register(function($class_name){
+    include "classes/".$class_name.".php";
+  });
 
-  // spl_autoload_register(function($class_name){
-  //   include "classes/".$class_name.".php";
-  // });
+  $user = new User();
+  $msg = $user->getMsg();
 
-  include "classes/Php.php";
-  include "classes/Ruby.php";
-  include "classes/Java.php";
-
-  use sazzad\Ruby as ru; //using alias
-
-  new sazzad\live\Php();
-  new ru();
-  new sazzad\Java();
-
-  echo HTML;
-  echo sazzad\CSS;
-  sazzad\coding();
+  switch($msg){
+    case 'email':
+      $objmsg = new SendEmail();
+      break;
+    case 'sms':
+      $objmsg = new SendSms();
+      break;
+    case 'fax': 
+      $objmsg = new SendFax();
+      break;
+  }
+  $objmsg->notification();
 ?>
 
 
