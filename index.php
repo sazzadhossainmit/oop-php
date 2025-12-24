@@ -7,9 +7,12 @@
     include "classes/".$class_name.".php";
   });
 
-  $db = new Database();
-  $db->setDriver("sqlite");
-  $db->connect("host","user","dbname","pass");
+  new Database();
+  new Database();
+  new Database();
+  new Database();
+  new Database();
+
 ?>
 
 
