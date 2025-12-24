@@ -1,27 +1,20 @@
 <?php
-  class Database{
-    public $driver;
-    public $link;
+  abstract class Database{
+    abstract public function connect();
+    abstract public function query();
+    abstract public function insertId();
 
-    public function setDriver($driver){
-      $this->driver = $driver;
+    public function setHost($host){
+      // set host here...
     }
-    public function connect(){
-      if($this->driver == "mysql"){
-        $mngmysql = new ManageMysql();
-        $mngmysql->setHost($host);
-        $mngmysql->setDB($db);
-        $mngmysql->setUser($user);
-        $mngmysql->setPass($pass);
-        $this->link = $mngmysql->connect();
-      }elseif($this->driver == "sqlite"){
-        $mngsqlite = new ManageSqlite();
-        $mngsqlite->setHost($host);
-        $mngsqlite->setDB($db);
-        $mngsqlite->setUser($user);
-        $mngsqlite->setPass($pass);
-        $this->link = $mngsqlite->connect();
-      }
+    public function setDB($db){
+      // set db here...
+    }
+    public function setUser($user){
+      // set user here...
+    }
+    public function setPass($pass){
+      // set password here...
     }
   }
 ?>
