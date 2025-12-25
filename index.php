@@ -7,11 +7,20 @@
     include "classes/".$class_name.".php";
   });
 
-  new Database();
-  new Database();
-  new Database();
-  new Database();
-  new Database();
+  $blogpost = getAllPost();
+  $posts = new Posts();
+  foreach($posts as $post){
+    echo $post->getTitle();
+    echo $post->getContent();
+    echo $post->getAuthor();
+    echo $post->getDate();
+    $comments = new comments($post->getComments());
+    foreach($comments as $comment){
+      echo $comment->getCommentAuthor();
+      echo $comment->getCommentContent();
+    }
+
+  }
 
 ?>
 
