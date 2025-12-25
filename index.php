@@ -7,21 +7,15 @@
     include "classes/".$class_name.".php";
   });
 
-  $blogpost = getAllPost();
-  $posts = new Posts();
-  foreach($posts as $post){
-    echo $post->getTitle();
-    echo $post->getContent();
-    echo $post->getAuthor();
-    echo $post->getDate();
-    $comments = new comments($post->getComments());
-    foreach($comments as $comment){
-      echo $comment->getCommentAuthor();
-      echo $comment->getCommentContent();
-    }
-
-  }
-
+  $obj = new Observable();
+  $sk = new Skype();
+  $whs = new Whatsapp();
+  
+  $s = new stdClass();
+  $obj->register($sk);
+  $obj->register($s);
+  $obj->register($whs);
+  $obj->stateChange();
 ?>
 
 
