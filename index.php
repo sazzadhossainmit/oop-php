@@ -11,13 +11,15 @@
     echo "Connection successful...";
   }
 
-  $sql = "SELECT name, skill FROM tbl_user ORDER BY ID";
+  $sql = "INSERT INTO tbl_user(name, email, skill) VALUES(?,?,?)";
   $stmt = $db->prepare($sql);
+  $stmt->bind_param("sss", $name, $email, $skill);
+  $name = "Osman Hadi";
+  $email = "osmanhadi@gmail.com";
+  $skill = "JUSTICE";
   $stmt->execute();
-  $stmt->bind_result($name, $skill);
-  while($stmt->fetch()){
-    echo "$skill</br>";
-  }
+  $stmt->close();
+  $db->close();
 ?>
 
 
