@@ -11,14 +11,12 @@
     echo "Connection successful...";
   }
 
-  // $sql = "SELECT * FROM tbl_user";
-  $sql = "UPDATE tbl_user SET skill='TYPING' WHERE id='13'";
-
-  $result = $db->query($sql);
-  while($data = $result->fetch_object()){
-    echo "<pre>";
-    echo $data->skill;
-    echo "</pre>";
+  $sql = "SELECT name, skill FROM tbl_user ORDER BY ID";
+  $stmt = $db->prepare($sql);
+  $stmt->execute();
+  $stmt->bind_result($name, $skill);
+  while($stmt->fetch()){
+    echo "$skill</br>";
   }
 ?>
 
