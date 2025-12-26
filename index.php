@@ -7,15 +7,28 @@
     include "classes/".$class_name.".php";
   });
 
-  $obj = new Observable();
-  $sk = new Skype();
-  $whs = new Whatsapp();
-  
-  $s = new stdClass();
-  $obj->register($sk);
-  $obj->register($s);
-  $obj->register($whs);
-  $obj->stateChange();
+  $post = new Post();
+  $comment = new Comment();
+
+  $post->filter();
+  $comment->filter();
+
+  if(BBcodeEnabled == false && EmoticonEnabled == false){
+    $postcontent = $post->getContent();
+    $commentcontent = $comment->getContent();
+  }elseif(BBcodeEnabled == true && EmoticonEnabled == false){
+    $bb = new BBcodeParser($post);
+    $postcontent = $bb->getContent();
+
+    $bb = new BBcodeParser($comment);
+    $commentcontent = $bb->getContent();
+  }elseif(BBcodeEnabled == false && EmoticonEnabled == true){
+    $em = new Emoticon($post);
+    $postcontent = $em->getContent();
+
+    $em = new Emoticon($comment);
+    $commentcontent = $em->getContent();
+  }
 ?>
 
 

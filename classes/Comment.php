@@ -1,10 +1,9 @@
 <?php
-  class Post{
-    private $title;
+  class Comment{
+    private $date;
     private $content;
 
     public function filter(){
-      $this->title = $filtered_title;
       $this->content = $filtered_content;
     }
 
