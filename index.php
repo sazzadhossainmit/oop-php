@@ -3,12 +3,13 @@
 ?>
 
 <?php
-  spl_autoload_register(function($class_name){
-    include "classes/".$class_name.".php";
-  });
-
-  $fa = new Facade();
-  $fa->findApartments("Jatrabari, Dhaka", "mapdiv");
+  $db = new mysqli("localhost", "root", "", "userdata");
+  if(mysqli_connect_errno()){
+    echo "Connection failed...";
+    exit();
+  }else{
+    echo "Connection successful...";
+  }
 ?>
 
 
