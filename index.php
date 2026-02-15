@@ -13,18 +13,17 @@
     echo "connection failed...".$e->getMessage();
   }
 
-  $name = "Morsalin";
-  $email = "morsalin@gmail.com";
-  $skill = "FOOTBALL";
-  $age = 27;
+  $id = 1;
 
-  $sql = " INSERT INTO tbl_user(name, email, skill, age) VALUES(:name, :email, :skill, :age) ";
+  $sql = "SELECT * FROM tbl_user WHERE id = :id";
   $stmt = $pdo->prepare($sql);
-  $stmt->bindValue(':name', $name);
-  $stmt->bindValue(':email', $email);
-  $stmt->bindValue(':skill', $skill);
-  $stmt->bindValue(':age', 27);
+  $stmt->bindValue(':id', $id);
   $stmt->execute();
+  while($data = $stmt->fetch()) {
+    echo "Name : ".$data['name']."<br>";
+    echo "Skill : ".$data['skill']."<br>";
+  }
+
 ?>
 
 
