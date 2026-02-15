@@ -13,24 +13,17 @@
     echo "connection failed...".$e->getMessage();
   }
 
-  $name = "Arif Khan";
-  $email = "arifkhan@gmail.com";
-  $skill = "JAVASCRIPT";
-  $age = 32;
-
-  /*
-  $sql = " INSERT INTO tbl_user(name, email, skill, age) VALUES(?, ?, ?, ?) ";
-  $stmt = $pdo->prepare($sql);
-  $arr = array($name, $email, $skill, $age);
-  $stmt->execute($arr);
-  */
+  $name = "Morsalin";
+  $email = "morsalin@gmail.com";
+  $skill = "FOOTBALL";
+  $age = 27;
 
   $sql = " INSERT INTO tbl_user(name, email, skill, age) VALUES(:name, :email, :skill, :age) ";
   $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':name', $name);
-  $stmt->bindParam(':email', $email);
-  $stmt->bindParam(':skill', $skill);
-  $stmt->bindParam(':age', $age);
+  $stmt->bindValue(':name', $name);
+  $stmt->bindValue(':email', $email);
+  $stmt->bindValue(':skill', $skill);
+  $stmt->bindValue(':age', 27);
   $stmt->execute();
 ?>
 
