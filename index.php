@@ -13,16 +13,24 @@
     echo "connection failed...".$e->getMessage();
   }
 
-  $id = 1;
+  // UPDATE
+  // $id = 28;
+  // $skill = "MARKETING";
 
-  $sql = "SELECT * FROM tbl_user WHERE id = :id";
+  // $sql = "UPDATE tbl_user SET skill = :skill WHERE id = :id";
+  // $stmt = $pdo->prepare($sql);
+  // $stmt->bindValue(':skill', $skill);
+  // $stmt->bindValue(':id', $id);
+  // $stmt->execute();
+  // echo $stmt->rowCount() . " Row updated...";
+
+  // DELETE
+  $id = 6;
+  $sql = "DELETE FROM tbl_user WHERE id = ?";
   $stmt = $pdo->prepare($sql);
-  $stmt->bindValue(':id', $id);
+  $stmt->bindParam(1, $id);
   $stmt->execute();
-  while($data = $stmt->fetch()) {
-    echo "Name : ".$data['name']."<br>";
-    echo "Skill : ".$data['skill']."<br>";
-  }
+  echo $stmt->rowCount() . " Row deleted...";
 
 ?>
 
