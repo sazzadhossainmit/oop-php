@@ -2,38 +2,88 @@
   include('inc/header.php');
 ?>
 
-<?php
-  $dsn = "mysql:dbname=userdata;host=localhost;";
-  $user = "root";
-  $pass = "";
 
-  try{
-    $pdo = new PDO($dsn, $user, $pass);
-  }catch(PDOException $e){
-    echo "connection failed...".$e->getMessage();
-  }
 
-  // UPDATE
-  // $id = 28;
-  // $skill = "MARKETING";
 
-  // $sql = "UPDATE tbl_user SET skill = :skill WHERE id = :id";
-  // $stmt = $pdo->prepare($sql);
-  // $stmt->bindValue(':skill', $skill);
-  // $stmt->bindValue(':id', $id);
-  // $stmt->execute();
-  // echo $stmt->rowCount() . " Row updated...";
+<div class="content">
+<section class="subject">
+<p>CRUD with PDO -Template & Database Design <span style="float:right"><a href="index.php">Create New</a></span><p>
+</section>
 
-  // DELETE
-  $id = 6;
-  $sql = "DELETE FROM tbl_user WHERE id = ?";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(1, $id);
-  $stmt->execute();
-  echo $stmt->rowCount() . " Row deleted...";
+<section class="mainleft">
+<form action="" method="post">
+<table>
+    <tr>
+        <td>Name: </td>
+        <td><input type="text" name="name" required="1"/></td>    
+    </tr>
 
-?>
+    <tr>
+      <td>Department: </td>
+        <td><input type="text" name="name" required="1"/></td>
+    </tr>
 
+    <tr>
+      <td>Age: </td>
+        <td><input type="text" name="name" required="1"/></td>
+    </tr>
+    <tr>
+      <td></td>
+        <td>
+        <input type="submit" name="submit" value="Submit"/>
+        <input type="reset" value="Clear"/>
+        </td>
+    </tr>
+  </table>
+</form>
+</section>
+
+
+
+<section class="mainright">
+  <table class="tblone">
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td>01</td>
+        <td>Ariful Islam</td>
+        <td>CSE</td>
+        <td>19</td>
+        <td>
+        <a href="">Edit</a> ||
+        <a href="">Delete</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>01</td>
+        <td>Delowar Jahan</td>
+        <td>Physics</td>
+        <td>25</td>
+        <td>
+        <a href="">Edit</a> ||
+        <a href="">Delete</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>01</td>
+        <td>Kamrul Hasan</td>
+        <td>Physics</td>
+        <td>25</td>
+        <td>
+        <a href="">Edit</a> ||
+        <a href="">Delete</a>
+        </td>
+    </tr>
+  </table>
+</section>
 
 
 
