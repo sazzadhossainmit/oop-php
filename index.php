@@ -8,14 +8,12 @@
   });
 ?>
 
-<?php 
-  $student = new Student();
-?>
+
 
 
 <div class="content">
 <section class="subject">
-<p>CRUD with PDO - Read data from Database <span style="float:right"><a href="index.php">Create New</a></span><p>
+<p>CRUD with PDO - Create Data <span style="float:right"><a href="index.php">Create New</a></span><p>
 </section>
 
 <section class="mainleft">
@@ -28,22 +26,40 @@
 
     <tr>
       <td>Department: </td>
-        <td><input type="text" name="name" required="1"/></td>
+        <td><input type="text" name="dep" required="1"/></td>
     </tr>
 
     <tr>
       <td>Age: </td>
-        <td><input type="text" name="name" required="1"/></td>
+        <td><input type="text" name="age" required="1"/></td>
     </tr>
     <tr>
       <td></td>
         <td>
-        <input type="submit" name="submit" value="Submit"/>
+        <input type="submit" name="create" value="Add"/>
         <input type="reset" value="Clear"/>
         </td>
     </tr>
   </table>
 </form>
+
+<?php 
+  $student = new Student();
+  if (isset($_POST['create'])){
+    $name = $_POST['name'];
+    $dep = $_POST['dep'];
+    $age = $_POST['age'];
+
+    $student->setName($name);
+    $student->setDep($dep);
+    $student->setAge($age);
+
+    if($student->insert()){
+      echo "<span style='font-weight: bold; color: green; margin-top: 20px;'> Data added succesfully...</span>";
+    }
+  }
+?>
+
 </section>
 
 
