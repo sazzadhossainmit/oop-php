@@ -6,7 +6,7 @@ include "DB.php";
     public function readAll(){
       $sql = "SELECT * FROM $this->table";
       $stmt = DB::prepare($sql);
-      $stmt->execut();
+      $stmt->execute();
       return $stmt->fetchAll();
     }
   }

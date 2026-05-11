@@ -2,12 +2,20 @@
   include('inc/header.php');
 ?>
 
+<?php
+  spl_autoload_register(function($class){
+    include "classes/".$class.".php";
+  });
+?>
 
+<?php 
+  $student = new Student();
+?>
 
 
 <div class="content">
 <section class="subject">
-<p>CRUD with PDO -Template & Database Design <span style="float:right"><a href="index.php">Create New</a></span><p>
+<p>CRUD with PDO - Read data from Database <span style="float:right"><a href="index.php">Create New</a></span><p>
 </section>
 
 <section class="mainleft">
@@ -50,38 +58,23 @@
         <th>Action</th>
     </tr>
 
-    <tr>
-        <td>01</td>
-        <td>Ariful Islam</td>
-        <td>CSE</td>
-        <td>19</td>
-        <td>
-        <a href="">Edit</a> ||
-        <a href="">Delete</a>
-        </td>
-    </tr>
+    <?php 
+      $i = 0;
+      foreach ( $student->readAll() as $key => $value ){
+        $i++;
+    ?>
 
     <tr>
-        <td>01</td>
-        <td>Delowar Jahan</td>
-        <td>Physics</td>
-        <td>25</td>
+        <td><?php echo $i; ?></td>
+        <td><?php echo $value['name']; ?></td>
+        <td><?php echo $value['dep']; ?></td>
+        <td><?php echo $value['age']; ?></td>
         <td>
         <a href="">Edit</a> ||
         <a href="">Delete</a>
         </td>
     </tr>
-
-    <tr>
-        <td>01</td>
-        <td>Kamrul Hasan</td>
-        <td>Physics</td>
-        <td>25</td>
-        <td>
-        <a href="">Edit</a> ||
-        <a href="">Delete</a>
-        </td>
-    </tr>
+    <?php } ?>
   </table>
 </section>
 
