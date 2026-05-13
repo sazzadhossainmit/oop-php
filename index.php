@@ -12,7 +12,7 @@
 
 <div class="content">
 <section class="subject">
-<p>CRUD with PDO - Create Data <span style="float:right"><a href="index.php">Create New</a></span><p>
+<p>CRUD with PDO - Delete Data <span style="float:right"><a href="index.php">Create New</a></span><p>
 </section>
 
 <section class="mainleft">
@@ -48,6 +48,15 @@
     }
   }
 
+?>
+
+<?php 
+  if(isset($_GET['action']) && $_GET['action']=='delete'){
+    $id = (int)$_GET['id'];
+    if($student->delete($id)){
+      echo "<span style='color:red; font-weight:bold;'>Data deleted successfully...</span>";
+    }
+  }
 ?>
 
 <?php 
@@ -140,7 +149,7 @@
         <td><?php echo $value['age']; ?></td>
         <td>
         <?php echo "<a href='index.php?action=update&id=".$value['id']."'>Edit</a>"; ?> ||
-        <a href="">Delete</a>
+        <?php echo "<a href='index.php?action=delete&id=".$value['id']."' onClick='return confirm (\"Are you sure to delete data?\")' >Delete</a>"; ?>
         </td>
     </tr>
     <?php } ?>
